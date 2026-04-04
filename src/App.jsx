@@ -24,16 +24,23 @@ const itinerary = [
   },
   {
     date: '04월 26일 (일)',
+    highlight: '🌊 제주 동쪽 해안 투어',
     events: [
-      { time: '11:00', title: '호텔 체크아웃', location: '호텔 로비', details: null, icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
-      { time: '전일', title: '자유 일정', location: '제주 전역', details: '숙박 및 개인 일정 확인 요망', icon: 'alert', type: 'warning', position: { lat: 33.4500, lng: 126.5500 } }
+      { time: '10:00', title: '호텔 체크아웃', location: '더 퍼스트70 로비', details: '정산 및 체크아웃 완료', icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
+      { time: '11:00', title: '정방폭포', location: '서귀포시 칠십리로', details: '바다로 직접 떨어지는 해안 폭포 감상', icon: 'pin', position: { lat: 33.2448, lng: 126.5718 } },
+      { time: '13:00', title: '쇠소깍', location: '서귀포시 쇠소깍로', details: '민물과 바닷물이 만나는 비경 감상 및 조각배 체험', icon: 'map', position: { lat: 33.2520, lng: 126.6219 } },
+      { time: '16:00', title: '성산 일출봉', location: '서귀포시 성산읍 일출로', details: '유네스코 세계자연유산 탐방 (왕복 50분)', icon: 'pin', position: { lat: 33.4585, lng: 126.9422 } },
+      { time: '18:30', title: '성산 숙소 체크인', location: '성산읍 고성리 인근', details: '성산 뷰 호텔 또는 플레이스 캠프 제주', icon: 'hotel', position: { lat: 33.4500, lng: 126.9200 } }
     ]
   },
   {
     date: '04월 27일 (월)',
+    highlight: '✈️ 해안도로 드라이브 및 귀가',
     events: [
-      { time: '11:00', title: '오전 자유 일정', location: '서귀포/제주 일대', details: null, icon: 'calendar', position: { lat: 33.3000, lng: 126.6000 } },
-      { time: '18:00', title: '렌터카 반납', location: '렌터카 반납소', details: null, icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '09:00', title: '섭지코지', location: '서귀포시 성산읍 섭지코지로', details: '4월 유채꽃과 푸른 바다 산책로', icon: 'pin', position: { lat: 33.4310, lng: 126.9284 } },
+      { time: '11:00', title: '월정리 해변', location: '제주시 구좌읍 월정리', details: '에메랄드빛 바다와 카페 거리 드라이브', icon: 'map', position: { lat: 33.5550, lng: 126.7950 } },
+      { time: '14:00', title: '함덕 해수욕장', location: '제주시 조천읍 함덕리', details: '서우봉 산책 및 마지막 바다 감상', icon: 'pin', position: { lat: 33.5432, lng: 126.6692 } },
+      { time: '18:00', title: '렌터카 반납', location: '제주공항 인근 반납소', details: '차량 검수 및 셔틀 이용', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
       { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
@@ -44,8 +51,8 @@ const budgetItems = [
   { category: '항공', title: '제주 → 청주 (아시아나)', amount: 67700, date: '04.27', icon: 'plane' },
   { category: '숙소', title: '제주 팰리스 호텔 (1박)', amount: 76800, date: '04.24', icon: 'hotel' },
   { category: '숙소', title: '더 퍼스트70 호텔 (1박)', amount: 53811, date: '04.25', icon: 'hotel' },
-  { category: '렌터카', title: '렌터카 대여', amount: 60000, date: '04.25', icon: 'car' },
-  { category: '숙소', title: '3박째 숙소', amount: 0, date: '04.26', icon: 'hotel', pending: true },
+  { category: '숙소', title: '성산 인근 숙소 (1박)', amount: 65000, date: '04.26', icon: 'hotel' },
+  { category: '렌터카', title: '렌터카 대여 (4일)', amount: 85000, date: '04.25', icon: 'car' },
 ];
 
 const Icon = ({ name, className = "text-slate-500" }) => {
