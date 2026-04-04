@@ -6,35 +6,35 @@ const itinerary = [
     date: '04월 24일 (금)',
     highlight: null,
     events: [
-      { time: '17:10', title: '청주 공항 출발', location: '청주국제공항', details: '아시아나항공 OZ8235 (예약: EJ4QMV)', icon: 'plane', position: { lat: 36.7161, lng: 127.4988 } },
+      { time: '17:10', title: '청주 공항 출발', location: '청주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 36.7161, lng: 127.4988 } },
       { time: '18:20', title: '제주 공항 도착', location: '제주국제공항', details: null, icon: 'pin', position: { lat: 33.5113, lng: 126.4930 } },
-      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 (예약: 2603101352460090)', icon: 'hotel', position: { lat: 33.5152, lng: 126.5269 } },
-      { time: '20:00', title: '저녁 식사: 미친부엌', location: '제주 제주시 탑동로 15', details: '제주 탑동 유명 이자카야/식당', icon: 'food', position: { lat: 33.5173, lng: 126.5245 } }
+      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 객실', icon: 'hotel', position: { lat: 33.5152, lng: 126.5269 } },
+      { time: '20:00', title: '저녁 식사', location: '제주 제주시 탑동 인근', details: '현지 식당 이용', icon: 'food', position: { lat: 33.5173, lng: 126.5245 } }
     ]
   },
   {
     date: '04월 25일 (토)',
-    highlight: '💍 결혼식 및 피로연 (메인 일정)',
+    highlight: '💍 결혼식 참석 (메인 일정)',
     events: [
-      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '더뉴아반떼CN7 2023 (예약: 155435)', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
-      { time: '08:30', title: '외삼촌 픽업', location: '제주국제공항 근처', details: '픽업 후 식장으로 이동', icon: 'users', position: { lat: 33.5065, lng: 126.4920 } },
-      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '서귀포시 예식장', details: '예식 참석 후 피로연 및 인사 (종일 일정)', icon: 'heart', type: 'main', position: { lat: 33.2450, lng: 126.5620 } },
-      { time: '18:30', title: '더 퍼스트70 호텔 체크인', location: '서귀포시 명동로 46', details: '슈페리어 트윈 (예약: 1707606719)', icon: 'hotel', position: { lat: 33.2482, lng: 126.5645 } }
+      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '대여 차량 확인 및 인수', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '08:30', title: '이동 및 대기', location: '제주 시내', details: '식장 이동 전 준비', icon: 'users', position: { lat: 33.5065, lng: 126.4920 } },
+      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '서귀포시 예식장', details: '예식 참석 및 축하 인사 (종일 일정)', icon: 'heart', type: 'main', position: { lat: 33.2450, lng: 126.5620 } },
+      { time: '18:30', title: '더 퍼스트70 호텔 체크인', location: '서귀포시 명동로 46', details: '슈페리어 객실', icon: 'hotel', position: { lat: 33.2482, lng: 126.5645 } }
     ]
   },
   {
     date: '04월 26일 (일)',
     events: [
-      { time: '11:00', title: '더 퍼스트70 체크아웃', location: '호텔 로비', details: null, icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
-      { time: '전일', title: '자유 일정 및 숙박 필요', location: '제주 전역', details: '3박째 숙소 예약 내역 확인 요망', icon: 'alert', type: 'warning', position: { lat: 33.4500, lng: 126.5500 } }
+      { time: '11:00', title: '호텔 체크아웃', location: '호텔 로비', details: null, icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
+      { time: '전일', title: '자유 일정', location: '제주 전역', details: '숙박 및 개인 일정 확인 요망', icon: 'alert', type: 'warning', position: { lat: 33.4500, lng: 126.5500 } }
     ]
   },
   {
     date: '04월 27일 (월)',
     events: [
       { time: '11:00', title: '오전 자유 일정', location: '서귀포/제주 일대', details: null, icon: 'calendar', position: { lat: 33.3000, lng: 126.6000 } },
-      { time: '18:00', title: '렌터카 반납', location: '자유렌터카 반납소', details: null, icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
-      { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 OZ8236 (예약: EJ56YF)', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
+      { time: '18:00', title: '렌터카 반납', location: '렌터카 반납소', details: null, icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
 ];
@@ -44,7 +44,7 @@ const budgetItems = [
   { category: '항공', title: '제주 → 청주 (아시아나)', amount: 67700, date: '04.27', icon: 'plane' },
   { category: '숙소', title: '제주 팰리스 호텔 (1박)', amount: 76800, date: '04.24', icon: 'hotel' },
   { category: '숙소', title: '더 퍼스트70 호텔 (1박)', amount: 53811, date: '04.25', icon: 'hotel' },
-  { category: '렌터카', title: '자유렌터카 (아반떼)', amount: 60000, date: '04.25', icon: 'car' },
+  { category: '렌터카', title: '렌터카 대여', amount: 60000, date: '04.25', icon: 'car' },
   { category: '숙소', title: '3박째 숙소', amount: 0, date: '04.26', icon: 'hotel', pending: true },
 ];
 
