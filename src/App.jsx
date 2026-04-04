@@ -24,23 +24,24 @@ const itinerary = [
   },
   {
     date: '04월 26일 (일)',
-    highlight: '🍰 제주 서쪽 미식 & 카페 투어',
+    highlight: '🥪 산방산 뷰 브런치 & 서쪽 미식 투어',
     events: [
-      { time: '10:30', title: '서귀포 출발', location: '더 퍼스트70', details: '서쪽 한림/한경 방면으로 이동', icon: 'car', position: { lat: 33.2482, lng: 126.5645 } },
-      { time: '12:00', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인 추천 고사리 육개장과 흑돼지 두루치기', icon: 'food', position: { lat: 33.4110, lng: 126.2650 } },
-      { time: '14:30', title: '카페: 노고롯 1985 (한경)', location: '제주시 한경면 중산간서로', details: '숲속 공방 분위기 브런치 카페, 소금빵 추천', icon: 'map', position: { lat: 33.3450, lng: 126.2420 } },
-      { time: '18:30', title: '저녁: 황금돼지 (한림)', location: '제주시 한림읍', details: '가성비 좋은 로컬 흑돼지 고깃집', icon: 'food', position: { lat: 33.4150, lng: 126.2680 } },
-      { time: '20:00', title: '한림/협재 숙소 체크인', location: '한림읍 인근', details: '서쪽 바다 근처 감성 숙소', icon: 'hotel', position: { lat: 33.3950, lng: 126.2420 } }
+      { time: '10:00', title: '호텔 체크아웃', location: '서귀포 시내', details: '서쪽 안덕 방면으로 이동', icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
+      { time: '10:30', title: '브런치: 위이 (wiee)', location: '서귀포시 안덕면 신화역사로682번길 12', details: '산방산 뷰 명당에서 즐기는 프렌치 토스트와 커피', icon: 'map', position: { lat: 33.2750, lng: 126.3450 } },
+      { time: '13:30', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인들이 줄 서서 먹는 고사리 육개장 전문점', icon: 'food', position: { lat: 33.4110, lng: 126.2650 } },
+      { time: '16:00', title: '협재 해변 산책', location: '한림읍 협재리', details: '에메랄드빛 바다와 비양도 전망 감상', icon: 'pin', position: { lat: 33.3950, lng: 126.2420 } },
+      { time: '18:30', title: '저녁: 황금돼지 (한림)', location: '제주시 한림읍', details: '화려하지 않지만 맛으로 승부하는 로컬 흑돼지 맛집', icon: 'food', position: { lat: 33.4150, lng: 126.2680 } },
+      { time: '20:00', title: '한림/협재 숙소 체크인', location: '한림읍 인근', details: '조용한 서쪽 마을 감성 숙소', icon: 'hotel', position: { lat: 33.4050, lng: 126.2520 } }
     ]
   },
   {
     date: '04월 27일 (월)',
     highlight: '☕ 애월 해안도로 카페 드라이브',
     events: [
-      { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 찾는 매콤한 고등어 조림 맛집', icon: 'food', position: { lat: 33.4750, lng: 126.3550 } },
-      { time: '13:30', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '바다 전망이 끝내주는 대형 카페, 연탄빵 디저트', icon: 'map', position: { lat: 33.4820, lng: 126.3680 } },
-      { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 동화 같은 집 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 } },
-      { time: '17:30', title: '렌터카 반납 및 간식', location: '제주공항 인근', details: '김희선 제주 몸국에서 마지막 별미 섭취', icon: 'food', position: { lat: 33.5100, lng: 126.4900 } },
+      { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 인정하는 매콤달콤 고등어 조림', icon: 'food', position: { lat: 33.4750, lng: 126.3550 } },
+      { time: '13:00', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '탁 트인 오션뷰와 시그니처 디저트 연탄빵', icon: 'map', position: { lat: 33.4820, lng: 126.3680 } },
+      { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 랜드마크 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 } },
+      { time: '17:30', title: '막간 식사: 김희선 제주 몸국', location: '제주공항 인근', details: '여행의 마무리를 든든하게 해주는 진한 몸국', icon: 'food', position: { lat: 33.5100, lng: 126.4900 } },
       { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
