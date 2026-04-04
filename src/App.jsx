@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
+import TravelMap from './components/TravelMap';
 
 const itinerary = [
   {
     date: '04월 24일 (금)',
     highlight: null,
     events: [
-      { time: '17:10', title: '청주 공항 출발', location: '청주국제공항', details: '아시아나항공 OZ8235 (예약: EJ4QMV)', icon: 'plane' },
-      { time: '18:20', title: '제주 공항 도착', location: '제주국제공항', details: null, icon: 'pin' },
-      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 (예약: 2603101352460090)', icon: 'hotel' },
-      { time: '20:00', title: '저녁 식사: 미친부엌', location: '제주 제주시 탑동로 15', details: '제주 탑동 유명 이자카야/식당', icon: 'food' }
+      { time: '17:10', title: '청주 공항 출발', location: '청주국제공항', details: '아시아나항공 OZ8235 (예약: EJ4QMV)', icon: 'plane', position: { lat: 36.7161, lng: 127.4988 } },
+      { time: '18:20', title: '제주 공항 도착', location: '제주국제공항', details: null, icon: 'pin', position: { lat: 33.5113, lng: 126.4930 } },
+      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 (예약: 2603101352460090)', icon: 'hotel', position: { lat: 33.5152, lng: 126.5269 } },
+      { time: '20:00', title: '저녁 식사: 미친부엌', location: '제주 제주시 탑동로 15', details: '제주 탑동 유명 이자카야/식당', icon: 'food', position: { lat: 33.5173, lng: 126.5245 } }
     ]
   },
   {
     date: '04월 25일 (토)',
     highlight: '💍 결혼식 및 피로연 (메인 일정)',
     events: [
-      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '더뉴아반떼CN7 2023 (예약: 155435)', icon: 'car' },
-      { time: '08:30', title: '외삼촌 픽업', location: '약속 장소 확인 필요', details: '픽업 후 식장으로 이동', icon: 'users' },
-      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '예식장 확인 필요', details: '예식 참석 후 피로연 및 인사 (종일 일정)', icon: 'heart', type: 'main' },
-      { time: '18:30', title: '더 퍼스트70 호텔 체크인', location: '서귀포시 명동로 46', details: '슈페리어 트윈 (예약: 1707606719)', icon: 'hotel' }
+      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '더뉴아반떼CN7 2023 (예약: 155435)', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '08:30', title: '외삼촌 픽업', location: '제주국제공항 근처', details: '픽업 후 식장으로 이동', icon: 'users', position: { lat: 33.5065, lng: 126.4920 } },
+      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '서귀포시 예식장', details: '예식 참석 후 피로연 및 인사 (종일 일정)', icon: 'heart', type: 'main', position: { lat: 33.2450, lng: 126.5620 } },
+      { time: '18:30', title: '더 퍼스트70 호텔 체크인', location: '서귀포시 명동로 46', details: '슈페리어 트윈 (예약: 1707606719)', icon: 'hotel', position: { lat: 33.2482, lng: 126.5645 } }
     ]
   },
   {
     date: '04월 26일 (일)',
     events: [
-      { time: '11:00', title: '더 퍼스트70 체크아웃', location: '호텔 로비', details: null, icon: 'clock' },
-      { time: '전일', title: '자유 일정 및 숙박 필요', location: '제주 전역', details: '3박째 숙소 예약 내역 확인 요망', icon: 'alert', type: 'warning' }
+      { time: '11:00', title: '더 퍼스트70 체크아웃', location: '호텔 로비', details: null, icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
+      { time: '전일', title: '자유 일정 및 숙박 필요', location: '제주 전역', details: '3박째 숙소 예약 내역 확인 요망', icon: 'alert', type: 'warning', position: { lat: 33.4500, lng: 126.5500 } }
     ]
   },
   {
     date: '04월 27일 (월)',
     events: [
-      { time: '11:00', title: '오전 자유 일정', location: '서귀포/제주 일대', details: null, icon: 'calendar' },
-      { time: '18:00', title: '렌터카 반납', location: '자유렌터카 반납소', details: null, icon: 'car' },
-      { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 OZ8236 (예약: EJ56YF)', icon: 'plane' }
+      { time: '11:00', title: '오전 자유 일정', location: '서귀포/제주 일대', details: null, icon: 'calendar', position: { lat: 33.3000, lng: 126.6000 } },
+      { time: '18:00', title: '렌터카 반납', location: '자유렌터카 반납소', details: null, icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 OZ8236 (예약: EJ56YF)', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
 ];
@@ -128,8 +129,14 @@ const Icon = ({ name, className = "text-slate-500" }) => {
 function App() {
   const [currentTab, setCurrentTab] = useState('itinerary');
   const [currentDay, setCurrentDay] = useState(0);
+  const [showMiniMap, setShowMiniMap] = useState(false);
 
   const totalAmount = budgetItems.reduce((acc, item) => acc + item.amount, 0);
+
+  const handleDaySelect = (dayIdx) => {
+    setCurrentDay(dayIdx);
+    setCurrentTab('itinerary');
+  };
 
   return (
     <div className="bg-slate-50 text-slate-900 pb-24 min-h-screen">
@@ -174,63 +181,89 @@ function App() {
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">총 지출 (예약된 항목)</p>
                 <h2 className="text-xl font-bold" id="total-amount-display">{totalAmount.toLocaleString()}원</h2>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-blue-400 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-              </svg>
+              <Icon name="budget" className="w-8 h-8 text-blue-400 opacity-50" />
             </div>
+          </div>
+        )}
+
+        {/* View: Map Header */}
+        {currentTab === 'map' && (
+          <div className="mt-2 bg-blue-50 p-3 rounded-xl border border-blue-100">
+            <p className="text-xs font-bold text-blue-700">전체 이동 경로</p>
+            <p className="text-[10px] text-blue-500">각 경로 또는 마커를 클릭하여 해당 일차 일정을 확인하세요.</p>
           </div>
         )}
       </header>
 
       {/* Main Content */}
       <main className="px-6 py-6 max-w-2xl mx-auto" id="main-content">
-        {currentTab === 'itinerary' ? (
+        {currentTab === 'itinerary' && (
           <div>
-            <div className="mb-8">
-              <h2 className="text-lg font-bold mb-1 text-slate-800">{itinerary[currentDay].date}</h2>
-              {itinerary[currentDay].highlight && (
-                <div className="inline-block bg-pink-50 text-pink-600 text-[10px] px-2 py-0.5 rounded font-bold border border-pink-100">
-                  {itinerary[currentDay].highlight}
-                </div>
-              )}
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-lg font-bold mb-1 text-slate-800">{itinerary[currentDay].date}</h2>
+                {itinerary[currentDay].highlight && (
+                  <div className="inline-block bg-pink-50 text-pink-600 text-[10px] px-2 py-0.5 rounded font-bold border border-pink-100">
+                    {itinerary[currentDay].highlight}
+                  </div>
+                )}
+              </div>
+              <button 
+                onClick={() => setShowMiniMap(!showMiniMap)}
+                className="flex items-center gap-1 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors"
+              >
+                <Icon name="map" className="w-3.5 h-3.5" />
+                {showMiniMap ? '일정 목록' : '지도 보기'}
+              </button>
             </div>
 
-            <div className="relative border-l-2 border-slate-200 ml-3 pl-8 space-y-10">
-              {itinerary[currentDay].events.map((event, idx) => (
-                <div key={idx} className="relative">
-                  <div className={`absolute -left-[41px] top-0 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center shadow-sm ${
-                    event.type === 'main' ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'
-                  }`}>
-                    <Icon name={event.icon} className={event.type === 'main' ? 'text-white' : 'text-slate-600'} />
-                  </div>
-                  <div className={`p-4 rounded-2xl border transition-all ${
-                    event.type === 'main' ? 'bg-white border-slate-900 shadow-xl scale-[1.02]' : 'bg-white border-slate-100 shadow-sm'
-                  }`}>
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="text-[10px] font-bold text-slate-400">{event.time}</span>
-                      {event.type === 'warning' && (
-                        <span className="bg-amber-50 text-amber-600 text-[8px] px-2 py-0.5 rounded-full font-bold">확인 필요</span>
+            {showMiniMap ? (
+              <div className="h-[400px] w-full rounded-3xl overflow-hidden shadow-inner border border-slate-200 mb-8">
+                <TravelMap 
+                  itinerary={itinerary} 
+                  currentDay={currentDay} 
+                  showAllDays={false}
+                />
+              </div>
+            ) : (
+              <div className="relative border-l-2 border-slate-200 ml-3 pl-8 space-y-10">
+                {itinerary[currentDay].events.map((event, idx) => (
+                  <div key={idx} className="relative">
+                    <div className={`absolute -left-[41px] top-0 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center shadow-sm ${
+                      event.type === 'main' ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'
+                    }`}>
+                      <Icon name={event.icon} className={event.type === 'main' ? 'text-white' : 'text-slate-600'} />
+                    </div>
+                    <div className={`p-4 rounded-2xl border transition-all ${
+                      event.type === 'main' ? 'bg-white border-slate-900 shadow-xl scale-[1.02]' : 'bg-white border-slate-100 shadow-sm'
+                    }`}>
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="text-[10px] font-bold text-slate-400">{event.time}</span>
+                        {event.type === 'warning' && (
+                          <span className="bg-amber-50 text-amber-600 text-[8px] px-2 py-0.5 rounded-full font-bold">확인 필요</span>
+                        )}
+                      </div>
+                      <h3 className="font-bold text-slate-900 mb-1 leading-tight">{event.title}</h3>
+                      {event.location && (
+                        <div className="flex items-center gap-1 text-[10px] text-slate-500 mb-2">
+                          <Icon name="pin" className="w-3 h-3" />
+                          <span>{event.location}</span>
+                        </div>
+                      )}
+                      {event.details && (
+                        <p className="text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                          {event.details}
+                        </p>
                       )}
                     </div>
-                    <h3 className="font-bold text-slate-900 mb-1 leading-tight">{event.title}</h3>
-                    {event.location && (
-                      <div className="flex items-center gap-1 text-[10px] text-slate-500 mb-2">
-                        <Icon name="pin" className="w-3 h-3" />
-                        <span>{event.location}</span>
-                      </div>
-                    )}
-                    {event.details && (
-                      <p className="text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                        {event.details}
-                      </p>
-                    )}
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
-        ) : (
+        )}
+
+        {currentTab === 'budget' && (
           <div className="space-y-4">
             <h2 className="text-lg font-bold mb-4">지출 내역</h2>
             {budgetItems.map((item, idx) => (
@@ -253,6 +286,16 @@ function App() {
             ))}
           </div>
         )}
+
+        {currentTab === 'map' && (
+          <div className="fixed inset-0 top-[180px] bottom-[80px]">
+             <TravelMap 
+              itinerary={itinerary} 
+              showAllDays={true}
+              onDaySelect={handleDaySelect}
+            />
+          </div>
+        )}
       </main>
 
       {/* Bottom Navigation */}
@@ -271,8 +314,11 @@ function App() {
           <Icon name="budget" className={currentTab === 'budget' ? 'text-blue-600' : 'text-slate-400'} />
           <span className="text-[10px] font-bold">경비</span>
         </button>
-        <button className="flex flex-col items-center gap-1 text-slate-400">
-          <Icon name="map" className="text-slate-400" />
+        <button
+          onClick={() => setCurrentTab('map')}
+          className={`flex flex-col items-center gap-1 ${currentTab === 'map' ? 'text-blue-600' : 'text-slate-400'}`}
+        >
+          <Icon name="map" className={currentTab === 'map' ? 'text-blue-600' : 'text-slate-400'} />
           <span className="text-[10px] font-bold">지도</span>
         </button>
         <button className="flex flex-col items-center gap-1 text-slate-400">
