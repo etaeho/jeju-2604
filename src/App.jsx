@@ -24,23 +24,23 @@ const itinerary = [
   },
   {
     date: '04월 26일 (일)',
-    highlight: '🌊 제주 동쪽 해안 투어',
+    highlight: '🍰 제주 서쪽 미식 & 카페 투어',
     events: [
-      { time: '10:00', title: '호텔 체크아웃', location: '더 퍼스트70 로비', details: '정산 및 체크아웃 완료', icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
-      { time: '11:00', title: '정방폭포', location: '서귀포시 칠십리로', details: '바다로 직접 떨어지는 해안 폭포 감상', icon: 'pin', position: { lat: 33.2448, lng: 126.5718 } },
-      { time: '13:00', title: '쇠소깍', location: '서귀포시 쇠소깍로', details: '민물과 바닷물이 만나는 비경 감상 및 조각배 체험', icon: 'map', position: { lat: 33.2520, lng: 126.6219 } },
-      { time: '16:00', title: '성산 일출봉', location: '서귀포시 성산읍 일출로', details: '유네스코 세계자연유산 탐방 (왕복 50분)', icon: 'pin', position: { lat: 33.4585, lng: 126.9422 } },
-      { time: '18:30', title: '성산 숙소 체크인', location: '성산읍 고성리 인근', details: '성산 뷰 호텔 또는 플레이스 캠프 제주', icon: 'hotel', position: { lat: 33.4500, lng: 126.9200 } }
+      { time: '10:30', title: '서귀포 출발', location: '더 퍼스트70', details: '서쪽 한림/한경 방면으로 이동', icon: 'car', position: { lat: 33.2482, lng: 126.5645 } },
+      { time: '12:00', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인 추천 고사리 육개장과 흑돼지 두루치기', icon: 'food', position: { lat: 33.4110, lng: 126.2650 } },
+      { time: '14:30', title: '카페: 노고롯 1985 (한경)', location: '제주시 한경면 중산간서로', details: '숲속 공방 분위기 브런치 카페, 소금빵 추천', icon: 'map', position: { lat: 33.3450, lng: 126.2420 } },
+      { time: '18:30', title: '저녁: 황금돼지 (한림)', location: '제주시 한림읍', details: '가성비 좋은 로컬 흑돼지 고깃집', icon: 'food', position: { lat: 33.4150, lng: 126.2680 } },
+      { time: '20:00', title: '한림/협재 숙소 체크인', location: '한림읍 인근', details: '서쪽 바다 근처 감성 숙소', icon: 'hotel', position: { lat: 33.3950, lng: 126.2420 } }
     ]
   },
   {
     date: '04월 27일 (월)',
-    highlight: '✈️ 해안도로 드라이브 및 귀가',
+    highlight: '☕ 애월 해안도로 카페 드라이브',
     events: [
-      { time: '09:00', title: '섭지코지', location: '서귀포시 성산읍 섭지코지로', details: '4월 유채꽃과 푸른 바다 산책로', icon: 'pin', position: { lat: 33.4310, lng: 126.9284 } },
-      { time: '11:00', title: '월정리 해변', location: '제주시 구좌읍 월정리', details: '에메랄드빛 바다와 카페 거리 드라이브', icon: 'map', position: { lat: 33.5550, lng: 126.7950 } },
-      { time: '14:00', title: '함덕 해수욕장', location: '제주시 조천읍 함덕리', details: '서우봉 산책 및 마지막 바다 감상', icon: 'pin', position: { lat: 33.5432, lng: 126.6692 } },
-      { time: '18:00', title: '렌터카 반납', location: '제주공항 인근 반납소', details: '차량 검수 및 셔틀 이용', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
+      { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 찾는 매콤한 고등어 조림 맛집', icon: 'food', position: { lat: 33.4750, lng: 126.3550 } },
+      { time: '13:30', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '바다 전망이 끝내주는 대형 카페, 연탄빵 디저트', icon: 'map', position: { lat: 33.4820, lng: 126.3680 } },
+      { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 동화 같은 집 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 } },
+      { time: '17:30', title: '렌터카 반납 및 간식', location: '제주공항 인근', details: '김희선 제주 몸국에서 마지막 별미 섭취', icon: 'food', position: { lat: 33.5100, lng: 126.4900 } },
       { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
@@ -51,7 +51,7 @@ const budgetItems = [
   { category: '항공', title: '제주 → 청주 (아시아나)', amount: 67700, date: '04.27', icon: 'plane' },
   { category: '숙소', title: '제주 팰리스 호텔 (1박)', amount: 76800, date: '04.24', icon: 'hotel' },
   { category: '숙소', title: '더 퍼스트70 호텔 (1박)', amount: 53811, date: '04.25', icon: 'hotel' },
-  { category: '숙소', title: '성산 인근 숙소 (1박)', amount: 65000, date: '04.26', icon: 'hotel' },
+  { category: '숙소', title: '한림 인근 감성 숙소 (1박)', amount: 75000, date: '04.26', icon: 'hotel' },
   { category: '렌터카', title: '렌터카 대여 (4일)', amount: 85000, date: '04.25', icon: 'car' },
 ];
 
