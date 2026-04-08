@@ -146,27 +146,32 @@ function App() {
   };
 
   return (
-    <div className="bg-white text-slate-900 min-h-screen flex flex-col overflow-hidden">
+    <div className="bg-white text-slate-900 min-h-screen flex flex-col overflow-hidden font-sans">
       {/* Header */}
       <header className="bg-white px-6 py-4 border-b border-slate-100 shrink-0 z-30">
-        <div className="flex justify-between items-center max-w-4xl mx-auto w-full">
-          <div>
-            <h1 className="text-xl font-extrabold tracking-tight text-slate-900">제주 트래블 캔버스</h1>
-            <p className="text-slate-400 text-[10px] font-medium uppercase tracking-widest">2026.04.24 - 04.27 · 3박 4일</p>
+        <div className="flex justify-between items-center max-w-5xl mx-auto w-full">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-slate-900 rounded-xl flex items-center justify-center">
+              <Icon name="itinerary" className="text-white w-4 h-4" />
+            </div>
+            <div>
+              <h1 className="text-lg font-black tracking-tight text-slate-900 leading-none mb-1">제주 트래블 캔버스</h1>
+              <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest">2026.04.24 - 04.27 · 3박 4일</p>
+            </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex bg-slate-100 p-1 rounded-2xl">
             <button
               onClick={() => setCurrentTab('itinerary')}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                currentTab === 'itinerary' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500'
+              className={`px-5 py-1.5 rounded-xl text-[11px] font-black transition-all ${
+                currentTab === 'itinerary' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'
               }`}
             >
               일정
             </button>
             <button
               onClick={() => setCurrentTab('budget')}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
-                currentTab === 'budget' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500'
+              className={`px-5 py-1.5 rounded-xl text-[11px] font-black transition-all ${
+                currentTab === 'budget' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'
               }`}
             >
               경비
@@ -176,31 +181,31 @@ function App() {
       </header>
 
       {/* Main Layout Area */}
-      <main className="flex-1 flex flex-col relative overflow-hidden">
+      <main className="flex-1 flex flex-col relative overflow-hidden bg-slate-50/30">
         {currentTab === 'itinerary' ? (
           <>
             {/* Top Fixed Map Area */}
-            <div className="h-[35vh] md:h-[45vh] w-full relative z-10 border-b border-slate-100 shadow-sm">
+            <div className="h-[38vh] md:h-[42vh] w-full relative z-10 border-b border-slate-100/50">
               <TravelMap 
                 itinerary={itinerary} 
                 currentDay={currentDay} 
                 showAllDays={false}
               />
               
-              {/* Day Selector Overlay */}
-              <div className="absolute bottom-4 left-0 right-0 z-[400] px-4 overflow-x-auto no-scrollbar">
-                <div className="flex gap-2 justify-center max-w-lg mx-auto">
+              {/* Day Selector Overlay - Re-styled for better visibility */}
+              <div className="absolute bottom-6 left-0 right-0 z-[400] px-4">
+                <div className="flex gap-2.5 justify-center max-w-lg mx-auto bg-white/60 backdrop-blur-xl p-2 rounded-[24px] shadow-2xl border border-white/40">
                   {itinerary.map((day, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentDay(idx)}
-                      className={`flex-shrink-0 px-5 py-2 rounded-2xl text-xs font-bold transition-all backdrop-blur-md shadow-lg border ${
+                      className={`flex-shrink-0 px-6 py-2.5 rounded-[18px] text-[11px] font-black transition-all duration-300 ${
                         currentDay === idx
-                          ? 'bg-slate-900 text-white border-slate-900'
-                          : 'bg-white/90 text-slate-600 border-white'
+                          ? 'bg-slate-900 text-white shadow-xl scale-105'
+                          : 'bg-white/40 text-slate-500 hover:bg-white/80'
                       }`}
                     >
-                      Day {idx + 1}
+                      DAY {idx + 1}
                     </button>
                   ))}
                 </div>
@@ -208,53 +213,61 @@ function App() {
             </div>
 
             {/* Bottom Scrollable Content Area */}
-            <div className="flex-1 overflow-y-auto no-scrollbar bg-slate-50/50">
-              <div className="max-w-2xl mx-auto px-6 py-8 pb-32">
-                <div className="mb-8">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-blue-600 font-black text-sm uppercase">Day {currentDay + 1}</span>
-                    <div className="h-px flex-1 bg-slate-200"></div>
-                  </div>
-                  <h2 className="text-2xl font-black text-slate-900 leading-tight">{itinerary[currentDay].date}</h2>
+            <div className="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
+              <div className="max-w-2xl mx-auto px-6 py-10 pb-40">
+                <div className="mb-10 text-center">
+                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-3 border border-blue-100">
+                    Day {currentDay + 1} Itinerary
+                  </span>
+                  <h2 className="text-3xl font-black text-slate-900 leading-tight mb-2">{itinerary[currentDay].date}</h2>
                   {itinerary[currentDay].highlight && (
-                    <p className="text-slate-500 text-sm mt-1 font-medium italic">"{itinerary[currentDay].highlight}"</p>
+                    <div className="inline-flex items-center gap-2 bg-slate-100/50 px-4 py-1.5 rounded-full border border-slate-100">
+                      <Icon name="heart" className="w-3 h-3 text-pink-500" />
+                      <p className="text-slate-500 text-[11px] font-bold tracking-tight">{itinerary[currentDay].highlight}</p>
+                    </div>
                   )}
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6 relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
                   {itinerary[currentDay].events.map((event, idx) => (
-                    <div key={idx} className="group flex gap-4">
-                      <div className="flex flex-col items-center">
-                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105 ${
-                          event.type === 'main' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600 border border-slate-100'
+                    <div key={idx} className="group relative flex gap-6">
+                      {/* Timeline Dot/Icon */}
+                      <div className="relative z-10">
+                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 border-4 border-white group-hover:scale-110 ${
+                          event.type === 'main' 
+                            ? 'bg-slate-900 text-white' 
+                            : 'bg-slate-50 text-slate-500'
                         }`}>
-                          <Icon name={event.icon} className={event.type === 'main' ? 'text-white' : 'text-slate-500'} />
+                          <Icon name={event.icon} className="w-4 h-4" />
                         </div>
-                        {idx !== itinerary[currentDay].events.length - 1 && (
-                          <div className="w-0.5 h-full bg-slate-200 my-1"></div>
-                        )}
                       </div>
-                      <div className="flex-1 pb-8">
-                        <div className="flex justify-between items-start mb-1">
-                          <span className="text-[10px] font-black text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md uppercase tracking-tighter">
+
+                      {/* Content Card */}
+                      <div className="flex-1 pb-2">
+                        <div className="flex justify-between items-center mb-1.5">
+                          <span className="text-[10px] font-black text-blue-500 tracking-tighter">
                             {event.time}
                           </span>
                           {event.type === 'main' && (
-                            <span className="text-[8px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">KEY EVENT</span>
+                            <span className="text-[9px] font-black text-slate-900 bg-amber-400 px-2.5 py-1 rounded-lg shadow-sm animate-bounce">MUST VISIT</span>
                           )}
                         </div>
-                        <h3 className="text-base font-bold text-slate-900 mb-1">{event.title}</h3>
-                        {event.location && (
-                          <div className="flex items-center gap-1 text-[11px] text-slate-500 mb-2">
-                            <Icon name="pin" className="w-3 h-3 text-slate-400" />
-                            <span className="font-medium">{event.location}</span>
-                          </div>
-                        )}
-                        {event.details && (
-                          <p className="text-[11px] leading-relaxed text-slate-500 bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
-                            {event.details}
-                          </p>
-                        )}
+                        <div className="bg-white p-5 rounded-[28px] border border-slate-100/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                          <h3 className="text-base font-black text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">{event.title}</h3>
+                          {event.location && (
+                            <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-3">
+                              <Icon name="pin" className="w-3 h-3" />
+                              <span className="font-semibold">{event.location}</span>
+                            </div>
+                          )}
+                          {event.details && (
+                            <div className="bg-slate-50/50 p-3 rounded-2xl border border-slate-50">
+                              <p className="text-[11px] leading-relaxed text-slate-500 font-medium tracking-tight">
+                                {event.details}
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
