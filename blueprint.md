@@ -30,3 +30,4 @@ The application has been upgraded to match the "Google Travel" user experience m
 2.  **Travel Logic**: Added `travel` metadata to itinerary events and implemented a vertical travel path indicator in the timeline.
 3.  **Refined Day Selector**: Redesigned the day selection bar with better shadows, backdrop filters, and active states.
 4.  **Automatic Focusing**: The map now ignores non-Jeju points (like Cheongju Airport) when calculating bounds, ensuring Day 1 starts with a perfect view of Jeju.
+5.  **Build Stability Fix**: Added `eslint.config.js` and resolved unused variable errors to ensure CI/CD pipeline success.
