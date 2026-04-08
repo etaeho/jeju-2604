@@ -30,14 +30,15 @@ const itinerary = [
       { time: '10:30', title: '브런치: 위이 (wiee)', location: '서귀포시 안덕면 신화역사로682번길 12', details: '산방산 뷰 명당에서 즐기는 프렌치 토스트와 커피', icon: 'map', position: { lat: 33.2750, lng: 126.3450 } },
       { time: '13:30', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인들이 줄 서서 먹는 고사리 육개장 전문점', icon: 'food', position: { lat: 33.4110, lng: 126.2650 } },
       { time: '16:00', title: '협재 해변 산책', location: '한림읍 협재리', details: '에메랄드빛 바다와 비양도 전망 감상', icon: 'pin', position: { lat: 33.3950, lng: 126.2420 } },
-      { time: '18:30', title: '저녁: 황금돼지 (한림)', location: '제주시 한림읍', details: '화려하지 않지만 맛으로 승부하는 로컬 흑돼지 맛집', icon: 'food', position: { lat: 33.4150, lng: 126.2680 } },
-      { time: '20:00', title: '한림/협재 숙소 체크인', location: '한림읍 인근', details: '조용한 서쪽 마을 감성 숙소', icon: 'hotel', position: { lat: 33.4050, lng: 126.2520 } }
+      { time: '18:30', title: '저녁: 제주 뽈살집 한림', location: '제주시 한림읍 한림로 703', details: '특수부위 뽈살 전문점으로 한림에서 가장 유명한 로컬 맛집', icon: 'food', position: { lat: 33.4116, lng: 126.2642 } },
+      { time: '20:00', title: '협재 아루미호텔 체크인', location: '제주시 한림읍 한림로 341', details: '협재 해변 인근의 깔끔한 가성비 호텔', icon: 'hotel', position: { lat: 33.3934, lng: 126.2415 } }
     ]
   },
   {
     date: '04월 27일 (월)',
     highlight: '☕ 애월 해안도로 카페 드라이브',
     events: [
+      { time: '10:00', title: '호텔 체크아웃', location: '협재 아루미호텔', details: '서쪽 애월 방면으로 드라이브 이동', icon: 'clock', position: { lat: 33.3934, lng: 126.2415 } },
       { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 인정하는 매콤달콤 고등어 조림', icon: 'food', position: { lat: 33.4750, lng: 126.3550 } },
       { time: '13:00', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '탁 트인 오션뷰와 시그니처 디저트 연탄빵', icon: 'map', position: { lat: 33.4820, lng: 126.3680 } },
       { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 랜드마크 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 } },
@@ -48,12 +49,11 @@ const itinerary = [
 ];
 
 const budgetItems = [
-  { category: '항공', title: '청주 → 제주 (아시아나)', amount: 74700, date: '04.24', icon: 'plane' },
-  { category: '항공', title: '제주 → 청주 (아시아나)', amount: 67700, date: '04.27', icon: 'plane' },
-  { category: '숙소', title: '제주 팰리스 호텔 (1박)', amount: 76800, date: '04.24', icon: 'hotel' },
-  { category: '숙소', title: '더 퍼스트70 호텔 (1박)', amount: 53811, date: '04.25', icon: 'hotel' },
-  { category: '숙소', title: '한림 인근 감성 숙소 (1박)', amount: 75000, date: '04.26', icon: 'hotel' },
+  { category: '항공', title: '청주 ↔ 제주 왕복 (2인)', amount: 284800, date: '04.24-04.27', icon: 'plane' },
+  { category: '숙소', title: '숙박 총계 (3박, 1실 2인)', amount: 205611, date: '04.24-04.27', icon: 'hotel' },
   { category: '렌터카', title: '렌터카 대여 (4일)', amount: 85000, date: '04.25', icon: 'car' },
+  { category: '식비', title: '예상 식비 (2인 4일)', amount: 350000, date: '04.24-04.27', icon: 'food' },
+  { category: '기타', title: '유류비 및 기타 경비', amount: 50000, date: '04.24-04.27', icon: 'budget' },
 ];
 
 const Icon = ({ name, className = "text-slate-500" }) => {
@@ -186,10 +186,13 @@ function App() {
           <div id="budget-header">
             <div className="flex items-center justify-between bg-slate-900 text-white p-4 rounded-2xl shadow-lg mt-2">
               <div>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">총 지출 (예약된 항목)</p>
+                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">2인 총 경비 산출액 (예상)</p>
                 <h2 className="text-xl font-bold" id="total-amount-display">{totalAmount.toLocaleString()}원</h2>
               </div>
-              <Icon name="budget" className="w-8 h-8 text-blue-400 opacity-50" />
+              <div className="flex flex-col items-end">
+                <Icon name="budget" className="w-8 h-8 text-blue-400 opacity-50 mb-1" />
+                <span className="bg-blue-500/20 text-blue-400 text-[8px] px-2 py-0.5 rounded-full font-bold">2인 기준</span>
+              </div>
             </div>
           </div>
         )}
