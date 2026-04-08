@@ -114,8 +114,8 @@ const TravelMap = ({ itinerary, currentDay, showAllDays, onDaySelect }) => {
         <ChangeView points={mapData.points} currentDay={currentDay} triggerRecenter={recenterTrigger} />
         
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          attribution='&copy; Google Maps'
+          url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
         />
         
         {/* 이동 경로 (Flow) 시각화 - 더 선명한 실선으로 변경 */}

@@ -4,11 +4,11 @@ import TravelMap from './components/TravelMap';
 const itinerary = [
   {
     date: '04월 24일 (금)',
-    highlight: null,
+    highlight: '✈️ 제주 도착 및 첫날 만찬',
     events: [
       { time: '17:10', title: '청주 공항 출발', location: '청주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 36.7161, lng: 127.4988 } },
-      { time: '18:20', title: '제주 공항 도착', location: '제주국제공항', details: null, icon: 'pin', position: { lat: 33.5113, lng: 126.4930 } },
-      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 객실', icon: 'hotel', position: { lat: 33.5152, lng: 126.5269 } },
+      { time: '18:20', title: '제주 공항 도착', location: '제주국제공항', details: null, icon: 'pin', position: { lat: 33.5113, lng: 126.4930 }, travel: { type: 'car', duration: '20분' } },
+      { time: '19:30', title: '제주 팰리스 호텔 체크인', location: '제주 제주시 중앙로 9', details: '싱글트윈 객실', icon: 'hotel', position: { lat: 33.5152, lng: 126.5269 }, travel: { type: 'walk', duration: '5분' } },
       { time: '20:00', title: '저녁 식사', location: '제주 제주시 탑동 인근', details: '현지 식당 이용', icon: 'food', position: { lat: 33.5173, lng: 126.5245 } }
     ]
   },
@@ -16,9 +16,9 @@ const itinerary = [
     date: '04월 25일 (토)',
     highlight: '💍 결혼식 참석 (메인 일정)',
     events: [
-      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '대여 차량 확인 및 인수', icon: 'car', position: { lat: 33.5062, lng: 126.4935 } },
-      { time: '08:30', title: '이동 및 대기', location: '제주 시내', details: '식장 이동 전 준비', icon: 'users', position: { lat: 33.5065, lng: 126.4920 } },
-      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '서귀포시 예식장', details: '예식 참석 및 축하 인사 (종일 일정)', icon: 'heart', type: 'main', position: { lat: 33.2450, lng: 126.5620 } },
+      { time: '08:00', title: '렌터카 인수', location: '자유렌터카', details: '대여 차량 확인 및 인수', icon: 'car', position: { lat: 33.5062, lng: 126.4935 }, travel: { type: 'car', duration: '10분' } },
+      { time: '08:30', title: '이동 및 대기', location: '제주 시내', details: '식장 이동 전 준비', icon: 'users', position: { lat: 33.5065, lng: 126.4920 }, travel: { type: 'car', duration: '50분' } },
+      { time: '10:00-18:00', title: '결혼식 참석 및 피로연', location: '서귀포시 예식장', details: '예식 참석 및 축하 인사 (종일 일정)', icon: 'heart', type: 'main', position: { lat: 33.2450, lng: 126.5620 }, travel: { type: 'car', duration: '5분' } },
       { time: '18:30', title: '더 퍼스트70 호텔 체크인', location: '서귀포시 명동로 46', details: '슈페리어 객실', icon: 'hotel', position: { lat: 33.2482, lng: 126.5645 } }
     ]
   },
@@ -26,11 +26,11 @@ const itinerary = [
     date: '04월 26일 (일)',
     highlight: '🥪 산방산 뷰 브런치 & 서쪽 미식 투어',
     events: [
-      { time: '10:00', title: '호텔 체크아웃', location: '서귀포 시내', details: '서쪽 안덕 방면으로 이동', icon: 'clock', position: { lat: 33.2482, lng: 126.5645 } },
-      { time: '10:30', title: '브런치: 위이 (wiee)', location: '서귀포시 안덕면 신화역사로682번길 12', details: '산방산 뷰 명당에서 즐기는 프렌치 토스트와 커피', icon: 'map', position: { lat: 33.2750, lng: 126.3450 } },
-      { time: '13:30', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인들이 줄 서서 먹는 고사리 육개장 전문점', icon: 'food', position: { lat: 33.4110, lng: 126.2650 } },
-      { time: '16:00', title: '협재 해변 산책', location: '한림읍 협재리', details: '에메랄드빛 바다와 비양도 전망 감상', icon: 'pin', position: { lat: 33.3950, lng: 126.2420 } },
-      { time: '18:30', title: '저녁: 제주 뽈살집 한림', location: '제주시 한림읍 한림로 703', details: '특수부위 뽈살 전문점으로 한림에서 가장 유명한 로컬 맛집', icon: 'food', position: { lat: 33.4116, lng: 126.2642 } },
+      { time: '10:00', title: '호텔 체크아웃', location: '서귀포 시내', details: '서쪽 안덕 방면으로 이동', icon: 'clock', position: { lat: 33.2482, lng: 126.5645 }, travel: { type: 'car', duration: '30분' } },
+      { time: '10:30', title: '브런치: 위이 (wiee)', location: '서귀포시 안덕면 신화역사로682번길 12', details: '산방산 뷰 명당에서 즐기는 프렌치 토스트와 커피', icon: 'map', position: { lat: 33.2750, lng: 126.3450 }, travel: { type: 'car', duration: '45분' } },
+      { time: '13:30', title: '점심: 수영밥상 (한림)', location: '제주시 한림읍 한림상로 123', details: '현지인들이 줄 서서 먹는 고사리 육개장 전문점', icon: 'food', position: { lat: 33.4110, lng: 126.2650 }, travel: { type: 'car', duration: '15분' } },
+      { time: '16:00', title: '협재 해변 산책', location: '한림읍 협재리', details: '에메랄드빛 바다와 비양도 전망 감상', icon: 'pin', position: { lat: 33.3950, lng: 126.2420 }, travel: { type: 'car', duration: '10분' } },
+      { time: '18:30', title: '저녁: 제주 뽈살집 한림', location: '제주시 한림읍 한림로 703', details: '특수부위 뽈살 전문점으로 한림에서 가장 유명한 로컬 맛집', icon: 'food', position: { lat: 33.4116, lng: 126.2642 }, travel: { type: 'car', duration: '10분' } },
       { time: '20:00', title: '협재 아루미호텔 체크인', location: '제주시 한림읍 한림로 341', details: '협재 해변 인근의 깔끔한 가성비 호텔', icon: 'hotel', position: { lat: 33.3934, lng: 126.2415 } }
     ]
   },
@@ -38,11 +38,11 @@ const itinerary = [
     date: '04월 27일 (월)',
     highlight: '☕ 애월 해안도로 카페 드라이브',
     events: [
-      { time: '10:00', title: '호텔 체크아웃', location: '협재 아루미호텔', details: '서쪽 애월 방면으로 드라이브 이동', icon: 'clock', position: { lat: 33.3934, lng: 126.2415 } },
-      { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 인정하는 매콤달콤 고등어 조림', icon: 'food', position: { lat: 33.4750, lng: 126.3550 } },
-      { time: '13:00', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '탁 트인 오션뷰와 시그니처 디저트 연탄빵', icon: 'map', position: { lat: 33.4820, lng: 126.3680 } },
-      { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 랜드마크 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 } },
-      { time: '17:30', title: '막간 식사: 김희선 제주 몸국', location: '제주공항 인근', details: '여행의 마무리를 든든하게 해주는 진한 몸국', icon: 'food', position: { lat: 33.5100, lng: 126.4900 } },
+      { time: '10:00', title: '호텔 체크아웃', location: '협재 아루미호텔', details: '서쪽 애월 방면으로 드라이브 이동', icon: 'clock', position: { lat: 33.3934, lng: 126.2415 }, travel: { type: 'car', duration: '25분' } },
+      { time: '11:00', title: '아점: 바다 속 고등어 쌈밥', location: '제주시 애월읍 일주서로', details: '현지인들이 인정하는 매콤달콤 고등어 조림', icon: 'food', position: { lat: 33.4750, lng: 126.3550 }, travel: { type: 'car', duration: '10분' } },
+      { time: '13:00', title: '카페: 노을리 (애월)', location: '제주시 애월읍 애월해안로', details: '탁 트인 오션뷰와 시그니처 디저트 연탄빵', icon: 'map', position: { lat: 33.4820, lng: 126.3680 }, travel: { type: 'car', duration: '25분' } },
+      { time: '15:30', title: '카페: 인그리드', location: '제주시 테우해안로 132', details: '이호테우 해변 앞 랜드마크 디자인 카페', icon: 'map', position: { lat: 33.4980, lng: 126.4520 }, travel: { type: 'car', duration: '15분' } },
+      { time: '17:30', title: '막간 식사: 김희선 제주 몸국', location: '제주공항 인근', details: '여행의 마무리를 든든하게 해주는 진한 몸국', icon: 'food', position: { lat: 33.5100, lng: 126.4900 }, travel: { type: 'car', duration: '10분' } },
       { time: '19:45', title: '제주 공항 출발', location: '제주국제공항', details: '아시아나항공 이용', icon: 'plane', position: { lat: 33.5113, lng: 126.4930 } }
     ]
   }
@@ -71,6 +71,11 @@ const Icon = ({ name, className = "text-slate-500" }) => {
     car: (
       <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 ${className}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l1-2h12l1 2M3 10h18M4 14h1m12 0h1M4 10v7a1 1 0 001 1h14a1 1 0 001-1v-7M7 18v1m10-1v1" />
+      </svg>
+    ),
+    walk: (
+      <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 ${className}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
     pin: (
@@ -228,48 +233,63 @@ function App() {
                   )}
                 </div>
 
-                <div className="space-y-6 relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
+                <div className="space-y-2 relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
                   {itinerary[currentDay].events.map((event, idx) => (
-                    <div key={idx} className="group relative flex gap-6">
-                      {/* Timeline Dot/Icon */}
-                      <div className="relative z-10">
-                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 border-4 border-white group-hover:scale-110 ${
-                          event.type === 'main' 
-                            ? 'bg-slate-900 text-white' 
-                            : 'bg-slate-50 text-slate-500'
-                        }`}>
-                          <Icon name={event.icon} className="w-4 h-4" />
+                    <React.Fragment key={idx}>
+                      <div className="group relative flex gap-6">
+                        {/* Timeline Dot/Icon */}
+                        <div className="relative z-10">
+                          <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 border-4 border-white group-hover:scale-110 ${
+                            event.type === 'main' 
+                              ? 'bg-slate-900 text-white' 
+                              : 'bg-slate-50 text-slate-500'
+                          }`}>
+                            <Icon name={event.icon} className="w-4 h-4" />
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Content Card */}
-                      <div className="flex-1 pb-2">
-                        <div className="flex justify-between items-center mb-1.5">
-                          <span className="text-[10px] font-black text-blue-500 tracking-tighter">
-                            {event.time}
-                          </span>
-                          {event.type === 'main' && (
-                            <span className="text-[9px] font-black text-slate-900 bg-amber-400 px-2.5 py-1 rounded-lg shadow-sm animate-bounce">MUST VISIT</span>
-                          )}
-                        </div>
-                        <div className="bg-white p-5 rounded-[28px] border border-slate-100/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
-                          <h3 className="text-base font-black text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">{event.title}</h3>
-                          {event.location && (
-                            <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-3">
-                              <Icon name="pin" className="w-3 h-3" />
-                              <span className="font-semibold">{event.location}</span>
-                            </div>
-                          )}
-                          {event.details && (
-                            <div className="bg-slate-50/50 p-3 rounded-2xl border border-slate-50">
-                              <p className="text-[11px] leading-relaxed text-slate-500 font-medium tracking-tight">
-                                {event.details}
-                              </p>
-                            </div>
-                          )}
+                        {/* Content Card */}
+                        <div className="flex-1 pb-4">
+                          <div className="flex justify-between items-center mb-1.5">
+                            <span className="text-[10px] font-black text-blue-500 tracking-tighter">
+                              {event.time}
+                            </span>
+                            {event.type === 'main' && (
+                              <span className="text-[9px] font-black text-slate-900 bg-amber-400 px-2.5 py-1 rounded-lg shadow-sm animate-bounce">MUST VISIT</span>
+                            )}
+                          </div>
+                          <div className="bg-white p-5 rounded-[28px] border border-slate-100/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                            <h3 className="text-base font-black text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">{event.title}</h3>
+                            {event.location && (
+                              <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-3">
+                                <Icon name="pin" className="w-3 h-3" />
+                                <span className="font-semibold">{event.location}</span>
+                              </div>
+                            )}
+                            {event.details && (
+                              <div className="bg-slate-50/50 p-3 rounded-2xl border border-slate-50">
+                                <p className="text-[11px] leading-relaxed text-slate-500 font-medium tracking-tight">
+                                  {event.details}
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      
+                      {/* Travel Info Indicator */}
+                      {event.travel && (
+                        <div className="ml-10 flex items-center gap-2 py-2">
+                          <div className="w-px h-8 bg-slate-100 ml-[9px]"></div>
+                          <div className="flex items-center gap-2 bg-blue-50/50 px-3 py-1.5 rounded-full border border-blue-100/30">
+                            <Icon name={event.travel.type === 'car' ? 'car' : 'walk'} className="w-3 h-3 text-blue-500" />
+                            <span className="text-[10px] font-black text-blue-600 uppercase tracking-tighter">
+                              약 {event.travel.duration} 이동
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
