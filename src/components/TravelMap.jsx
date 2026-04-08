@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState, useCallback } from 'react';
+import { useMemo, useEffect, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -54,8 +54,7 @@ function ChangeView({ points, currentDay, triggerRecenter }) {
   return null;
 }
 
-const TravelMap = ({ itinerary, currentDay, showAllDays, onDaySelect }) => {
-  const [mapLoaded, setMapLoaded] = useState(false);
+const TravelMap = ({ itinerary, currentDay }) => {
   const [recenterTrigger, setRecenterTrigger] = useState(0);
 
   const mapData = useMemo(() => {
@@ -109,7 +108,6 @@ const TravelMap = ({ itinerary, currentDay, showAllDays, onDaySelect }) => {
         scrollWheelZoom={true}
         style={{ width: '100%', height: '100%', backgroundColor: '#f8fafc' }}
         zoomControl={false}
-        whenReady={() => setMapLoaded(true)}
       >
         <ChangeView points={mapData.points} currentDay={currentDay} triggerRecenter={recenterTrigger} />
         

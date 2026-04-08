@@ -145,11 +145,6 @@ function App() {
 
   const totalAmount = budgetItems.reduce((acc, item) => acc + item.amount, 0);
 
-  const handleDaySelect = (dayIdx) => {
-    setCurrentDay(dayIdx);
-    setCurrentTab('itinerary');
-  };
-
   return (
     <div className="bg-white text-slate-900 min-h-screen flex flex-col overflow-hidden font-sans">
       {/* Header */}
