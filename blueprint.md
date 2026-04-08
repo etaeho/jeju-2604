@@ -6,30 +6,31 @@ A React-based web application for managing a Jeju Island travel itinerary and bu
 ## Project Details
 - **Framework**: React (Vite)
 - **Styling**: Tailwind CSS
-- **Maps**: React-Leaflet (OpenStreetMap)
+- **Maps**: React-Leaflet (OpenStreetMap/CartoDB Voyager)
 - **Deployment**: Wrangler (Cloudflare Pages)
 - **Key Features**:
-    - Daily itinerary view with event timeline.
-    - Budget tracking by category.
-    - Interactive map showing travel paths and markers.
-    - Responsive mobile-first design.
+    - **Google Travel Canvas UI**: Fixed top map with scrollable bottom itinerary.
+    - **Dynamic Map Sync**: Map automatically adjusts bounds based on the selected day's events.
+    - **Modern Markers**: Numbered diamond markers with visual priority for main events.
+    - **Responsive Design**: Mobile-first layout optimized for travel use.
 
 ## Features & Styles implemented
-- **Itinerary**: Grouped by days (Day 1 to Day 4).
-- **Map Integration**: Custom markers for each event, polyline paths between events.
-- **UI/UX**: Bottom navigation, sticky headers, day selector.
-- **Modern CSS**: Tailwind-based components with soft shadows and rounded corners.
+- **Canvas Layout**: 40vh fixed map area, 60vh scrollable content area.
+- **Map Integration**: CartoDB Voyager tiles for a cleaner, modern look. Custom numbered markers.
+- **UI/UX**: Minimalist header, floating day selector, and clean timeline.
 
-## Completed Changes: Update April 26-27 Itinerary
-The itinerary for April 26th and 27th has been updated with specific locations and coordinates.
+## Completed Changes: Google Travel Canvas UI Implementation
+The entire application layout was restructured to provide a modern, map-centric experience.
 
 ### Steps Taken
-1. **Researched Coordinates**:
-    - 제주 뽈살집 한림: { lat: 33.4116, lng: 126.2642 }
-    - 협재 아루미호텔: { lat: 33.3934, lng: 126.2415 }
-2. **Updated `src/App.jsx`**:
-    - Day 3 (April 26) evening dinner: Changed to '제주 뽈살집 한림'.
-    - Day 3 (April 26) accommodation: Changed to '협재 아루미호텔'.
-    - Day 4 (April 27) morning: Added '협재 아루미호텔' checkout at 10:00.
-    - Updated all relevant coordinates for map markers.
-3. **Verified**: The itinerary and map now correctly show the updated locations.
+1.  **Restructured `App.jsx`**:
+    - Implemented a two-pane vertical layout (Map top, List bottom).
+    - Removed 'Map View' toggle as the map is now always visible for itineraries.
+    - Updated typography to a bolder, more modern style (Black/ExtraBold).
+2.  **Enhanced `TravelMap.jsx`**:
+    - Added `ChangeView` component using `map.fitBounds` for smooth transitions between days.
+    - Implemented custom SVG/CSS diamond markers with rotation.
+    - Switched to CartoDB Voyager tiles for better aesthetic alignment with "Travel" apps.
+3.  **Automated Deployment**:
+    - Updated `wrangler.jsonc` for better Cloudflare Pages integration.
+    - Ensured every change is pushed to the remote repository to trigger CI/CD.

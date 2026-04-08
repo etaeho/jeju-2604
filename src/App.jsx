@@ -137,7 +137,6 @@ const Icon = ({ name, className = "text-slate-500" }) => {
 function App() {
   const [currentTab, setCurrentTab] = useState('itinerary');
   const [currentDay, setCurrentDay] = useState(0);
-  const [showMiniMap, setShowMiniMap] = useState(false);
 
   const totalAmount = budgetItems.reduce((acc, item) => acc + item.amount, 0);
 
@@ -147,196 +146,162 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-50 text-slate-900 pb-24 min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="bg-white px-6 pt-10 pb-6 border-b border-slate-200 sticky top-0 z-10">
-        <div className="flex justify-between items-end mb-4">
+      <header className="bg-white px-6 py-4 border-b border-slate-100 shrink-0 z-30">
+        <div className="flex justify-between items-center max-w-4xl mx-auto w-full">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">제주도 여행</h1>
-            <p className="text-slate-500 text-sm">2026.04.24 - 04.27 (3박 4일)</p>
+            <h1 className="text-xl font-extrabold tracking-tight text-slate-900">제주 트래블 캔버스</h1>
+            <p className="text-slate-400 text-[10px] font-medium uppercase tracking-widest">2026.04.24 - 04.27 · 3박 4일</p>
           </div>
-          <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
-            예약 관리중
+          <div className="flex gap-2">
+            <button
+              onClick={() => setCurrentTab('itinerary')}
+              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
+                currentTab === 'itinerary' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500'
+              }`}
+            >
+              일정
+            </button>
+            <button
+              onClick={() => setCurrentTab('budget')}
+              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
+                currentTab === 'budget' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500'
+              }`}
+            >
+              경비
+            </button>
           </div>
         </div>
-
-        {/* View: Itinerary Header */}
-        {currentTab === 'itinerary' && (
-          <div id="itinerary-header">
-            <div className="flex gap-2 overflow-x-auto no-scrollbar py-2" id="day-selector">
-              {itinerary.map((day, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentDay(idx)}
-                  className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm transition-all ${
-                    currentDay === idx
-                      ? 'bg-slate-900 text-white shadow-lg'
-                      : 'bg-white text-slate-500 border border-slate-200'
-                  }`}
-                >
-                  Day {idx + 1}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* View: Budget Header */}
-        {currentTab === 'budget' && (
-          <div id="budget-header">
-            <div className="flex items-center justify-between bg-slate-900 text-white p-4 rounded-2xl shadow-lg mt-2">
-              <div>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">2인 총 경비 산출액 (예상)</p>
-                <h2 className="text-xl font-bold" id="total-amount-display">{totalAmount.toLocaleString()}원</h2>
-              </div>
-              <div className="flex flex-col items-end">
-                <Icon name="budget" className="w-8 h-8 text-blue-400 opacity-50 mb-1" />
-                <span className="bg-blue-500/20 text-blue-400 text-[8px] px-2 py-0.5 rounded-full font-bold">2인 기준</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* View: Map Header */}
-        {currentTab === 'map' && (
-          <div className="mt-2 bg-blue-50 p-3 rounded-xl border border-blue-100">
-            <p className="text-xs font-bold text-blue-700">전체 이동 경로</p>
-            <p className="text-[10px] text-blue-500">각 경로 또는 마커를 클릭하여 해당 일차 일정을 확인하세요.</p>
-          </div>
-        )}
       </header>
 
-      {/* Main Content */}
-      <main className="px-6 py-6 max-w-2xl mx-auto" id="main-content">
-        {currentTab === 'itinerary' && (
-          <div>
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h2 className="text-lg font-bold mb-1 text-slate-800">{itinerary[currentDay].date}</h2>
-                {itinerary[currentDay].highlight && (
-                  <div className="inline-block bg-pink-50 text-pink-600 text-[10px] px-2 py-0.5 rounded font-bold border border-pink-100">
-                    {itinerary[currentDay].highlight}
-                  </div>
-                )}
+      {/* Main Layout Area */}
+      <main className="flex-1 flex flex-col relative overflow-hidden">
+        {currentTab === 'itinerary' ? (
+          <>
+            {/* Top Fixed Map Area */}
+            <div className="h-[35vh] md:h-[45vh] w-full relative z-10 border-b border-slate-100 shadow-sm">
+              <TravelMap 
+                itinerary={itinerary} 
+                currentDay={currentDay} 
+                showAllDays={false}
+              />
+              
+              {/* Day Selector Overlay */}
+              <div className="absolute bottom-4 left-0 right-0 z-[400] px-4 overflow-x-auto no-scrollbar">
+                <div className="flex gap-2 justify-center max-w-lg mx-auto">
+                  {itinerary.map((day, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentDay(idx)}
+                      className={`flex-shrink-0 px-5 py-2 rounded-2xl text-xs font-bold transition-all backdrop-blur-md shadow-lg border ${
+                        currentDay === idx
+                          ? 'bg-slate-900 text-white border-slate-900'
+                          : 'bg-white/90 text-slate-600 border-white'
+                      }`}
+                    >
+                      Day {idx + 1}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <button 
-                onClick={() => setShowMiniMap(!showMiniMap)}
-                className="flex items-center gap-1 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors"
-              >
-                <Icon name="map" className="w-3.5 h-3.5" />
-                {showMiniMap ? '일정 목록' : '지도 보기'}
-              </button>
             </div>
 
-            {showMiniMap ? (
-              <div className="h-[400px] w-full rounded-3xl overflow-hidden shadow-inner border border-slate-200 mb-8">
-                <TravelMap 
-                  itinerary={itinerary} 
-                  currentDay={currentDay} 
-                  showAllDays={false}
-                />
-              </div>
-            ) : (
-              <div className="relative border-l-2 border-slate-200 ml-3 pl-8 space-y-10">
-                {itinerary[currentDay].events.map((event, idx) => (
-                  <div key={idx} className="relative">
-                    <div className={`absolute -left-[41px] top-0 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center shadow-sm ${
-                      event.type === 'main' ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'
-                    }`}>
-                      <Icon name={event.icon} className={event.type === 'main' ? 'text-white' : 'text-slate-600'} />
-                    </div>
-                    <div className={`p-4 rounded-2xl border transition-all ${
-                      event.type === 'main' ? 'bg-white border-slate-900 shadow-xl scale-[1.02]' : 'bg-white border-slate-100 shadow-sm'
-                    }`}>
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="text-[10px] font-bold text-slate-400">{event.time}</span>
-                        {event.type === 'warning' && (
-                          <span className="bg-amber-50 text-amber-600 text-[8px] px-2 py-0.5 rounded-full font-bold">확인 필요</span>
+            {/* Bottom Scrollable Content Area */}
+            <div className="flex-1 overflow-y-auto no-scrollbar bg-slate-50/50">
+              <div className="max-w-2xl mx-auto px-6 py-8 pb-32">
+                <div className="mb-8">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-blue-600 font-black text-sm uppercase">Day {currentDay + 1}</span>
+                    <div className="h-px flex-1 bg-slate-200"></div>
+                  </div>
+                  <h2 className="text-2xl font-black text-slate-900 leading-tight">{itinerary[currentDay].date}</h2>
+                  {itinerary[currentDay].highlight && (
+                    <p className="text-slate-500 text-sm mt-1 font-medium italic">"{itinerary[currentDay].highlight}"</p>
+                  )}
+                </div>
+
+                <div className="space-y-4">
+                  {itinerary[currentDay].events.map((event, idx) => (
+                    <div key={idx} className="group flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105 ${
+                          event.type === 'main' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600 border border-slate-100'
+                        }`}>
+                          <Icon name={event.icon} className={event.type === 'main' ? 'text-white' : 'text-slate-500'} />
+                        </div>
+                        {idx !== itinerary[currentDay].events.length - 1 && (
+                          <div className="w-0.5 h-full bg-slate-200 my-1"></div>
                         )}
                       </div>
-                      <h3 className="font-bold text-slate-900 mb-1 leading-tight">{event.title}</h3>
-                      {event.location && (
-                        <div className="flex items-center gap-1 text-[10px] text-slate-500 mb-2">
-                          <Icon name="pin" className="w-3 h-3" />
-                          <span>{event.location}</span>
+                      <div className="flex-1 pb-8">
+                        <div className="flex justify-between items-start mb-1">
+                          <span className="text-[10px] font-black text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md uppercase tracking-tighter">
+                            {event.time}
+                          </span>
+                          {event.type === 'main' && (
+                            <span className="text-[8px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">KEY EVENT</span>
+                          )}
                         </div>
-                      )}
-                      {event.details && (
-                        <p className="text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                          {event.details}
-                        </p>
-                      )}
+                        <h3 className="text-base font-bold text-slate-900 mb-1">{event.title}</h3>
+                        {event.location && (
+                          <div className="flex items-center gap-1 text-[11px] text-slate-500 mb-2">
+                            <Icon name="pin" className="w-3 h-3 text-slate-400" />
+                            <span className="font-medium">{event.location}</span>
+                          </div>
+                        )}
+                        {event.details && (
+                          <p className="text-[11px] leading-relaxed text-slate-500 bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                            {event.details}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          /* Budget View (Full Screen Scroll) */
+          <div className="flex-1 overflow-y-auto no-scrollbar bg-slate-50/50">
+            <div className="max-w-2xl mx-auto px-6 py-8 pb-32">
+              <div className="bg-slate-900 text-white p-8 rounded-[32px] shadow-2xl mb-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+                <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-2">Total Estimated Budget</p>
+                <h2 className="text-4xl font-black mb-1 leading-none">{totalAmount.toLocaleString()}원</h2>
+                <span className="inline-block bg-blue-500/20 text-blue-400 text-[10px] px-3 py-1 rounded-full font-bold">2인 기준 예상 경비</span>
+              </div>
+              
+              <div className="space-y-3">
+                <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest px-2 mb-4">Category Details</h3>
+                {budgetItems.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4 bg-white p-5 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner">
+                      <Icon name={item.icon} className="text-slate-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[9px] font-black text-blue-500 uppercase tracking-tighter mb-0.5">{item.category}</p>
+                      <h4 className="text-sm font-bold text-slate-900 truncate">{item.title}</h4>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-sm font-black text-slate-900">{item.amount.toLocaleString()}원</p>
+                      <p className="text-[9px] text-slate-400 font-medium">{item.date}</p>
                     </div>
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        )}
-
-        {currentTab === 'budget' && (
-          <div className="space-y-4">
-            <h2 className="text-lg font-bold mb-4">지출 내역</h2>
-            {budgetItems.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center">
-                  <Icon name={item.icon} />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[10px] font-bold text-blue-500 mb-0.5">{item.category}</p>
-                  <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
-                  <p className="text-[10px] text-slate-400">{item.date}</p>
-                </div>
-                <div className="text-right">
-                  <p className={`text-sm font-bold ${item.pending ? 'text-slate-400' : 'text-slate-900'}`}>
-                    {item.amount > 0 ? `${item.amount.toLocaleString()}원` : '미정'}
-                  </p>
-                  {item.pending && <p className="text-[8px] text-amber-500 font-bold">예약 필요</p>}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {currentTab === 'map' && (
-          <div className="fixed inset-0 top-[180px] bottom-[80px]">
-             <TravelMap 
-              itinerary={itinerary} 
-              showAllDays={true}
-              onDaySelect={handleDaySelect}
-            />
+            </div>
           </div>
         )}
       </main>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-white/80 backdrop-blur-lg shadow-2xl rounded-3xl border border-slate-200 px-8 py-3 flex justify-around items-center z-20">
-        <button
-          onClick={() => setCurrentTab('itinerary')}
-          className={`flex flex-col items-center gap-1 ${currentTab === 'itinerary' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <Icon name="itinerary" className={currentTab === 'itinerary' ? 'text-blue-600' : 'text-slate-400'} />
-          <span className="text-[10px] font-bold">일정</span>
+      {/* Floating Quick Navigation (Optional) */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 bg-white/80 backdrop-blur-xl border border-white/20 shadow-2xl rounded-full px-4 py-2 flex gap-4">
+        <button className="p-3 text-slate-400 hover:text-blue-600 transition-colors">
+          <Icon name="share" className="w-5 h-5" />
         </button>
-        <button
-          onClick={() => setCurrentTab('budget')}
-          className={`flex flex-col items-center gap-1 ${currentTab === 'budget' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <Icon name="budget" className={currentTab === 'budget' ? 'text-blue-600' : 'text-slate-400'} />
-          <span className="text-[10px] font-bold">경비</span>
-        </button>
-        <button
-          onClick={() => setCurrentTab('map')}
-          className={`flex flex-col items-center gap-1 ${currentTab === 'map' ? 'text-blue-600' : 'text-slate-400'}`}
-        >
-          <Icon name="map" className={currentTab === 'map' ? 'text-blue-600' : 'text-slate-400'} />
-          <span className="text-[10px] font-bold">지도</span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-slate-400">
-          <Icon name="share" className="text-slate-400" />
-          <span className="text-[10px] font-bold">공유</span>
-        </button>
-      </nav>
+      </div>
     </div>
   );
 }
